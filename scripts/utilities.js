@@ -1,13 +1,16 @@
 export async function initApp(MapView, WebMap, esriConfig) {
   const config = await import("../config.js");
-  const { createMap, getPortal, createView, handleShareTheme } = await import(
-    "./utilities.js"
-  );
-  const { id, portalUrl } = config.default.wma;
+  const configObj = config.default;
+
+  const { type } = configObj;
+  const { id, portalUrl } = configObj[type];
+
   esriConfig.portalUrl = portalUrl;
+
   const map = await createMap(WebMap, id);
   const view = await createView(MapView, map);
   const portal = await getPortal(map);
+
   handleShareTheme(portal);
 
   return Promise.resolve({
@@ -52,13 +55,13 @@ export async function getPortal(webmap) {
 export async function handleShareTheme(portal) {
   const { sharedTheme } = portal.portalProperties;
   const header = document.querySelector("header");
-  header.style.background = sharedTheme.header.background;
-  header.style.color = sharedTheme.header.text;
+  const { background, text } = sharedTheme.header;
+  const { style } = header;
+  style.background = background;
+  style.color = text;
 
   const logoContainer = document.querySelector(".logo-container");
-
   const logoImg = document.createElement("img");
   logoImg.src = sharedTheme.logo.small;
-
   logoContainer.appendChild(logoImg);
 }

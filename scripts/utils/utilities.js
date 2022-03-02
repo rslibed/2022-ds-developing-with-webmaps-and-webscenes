@@ -1,5 +1,5 @@
-export async function initApp(MapView, WebMap, esriConfig) {
-  const config = await import("../config.js");
+export async function initApp(MapView, WebMap, Portal, esriConfig) {
+  const config = await import("../../config.js");
   const configObj = config.default;
 
   const { type } = configObj;
@@ -9,7 +9,7 @@ export async function initApp(MapView, WebMap, esriConfig) {
 
   const map = await createMap(WebMap, id);
   const view = await createView(MapView, map);
-  const portal = await getPortal(map);
+  const portal = await getPortal(Portal, portalUrl);
 
   handleShareTheme(portal);
 
@@ -42,9 +42,9 @@ export function createView(MapView, webmap) {
   });
 }
 
-export async function getPortal(webmap) {
+export async function getPortal(Portal, url) {
   try {
-    const portal = await webmap.portalItem.portal.load();
+    const portal = await new Portal({ url }).load();
     return Promise.resolve(portal);
   } catch (err) {
     console.error("ERROR: ", err);

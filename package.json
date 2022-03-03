@@ -1,0 +1,21 @@
+{
+  "name": "vite-demo",
+  "version": "0.0.0",
+  "scripts": {
+    "start": "vite",
+    "watch:sass": "sass -w src/styles/index.scss public/index.css --style=compressed --embed-sources",
+    "watch:tsc": "tsc -w",
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "serve": "vite preview"
+  },
+  "devDependencies": {
+    "sass": "^1.36.0",
+    "start-dom-jsx": "*",
+    "typescript": "^4.3.2",
+    "vite": "^2.4.3"
+  },
+  "dependencies": {
+    "@arcgis/core": "^4.22.2"
+  }
+}

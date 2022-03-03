@@ -1,28 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ArcGIS Online: Developing with Web Maps and Web Scenes</title>
-    <link rel="stylesheet" href="./main.css" />
-    <link
-      rel="stylesheet"
-      href="https://js.arcgis.com/4.22/esri/themes/light/main.css"
-    />
-    <script src="https://js.arcgis.com/4.22/"></script>
-  </head>
-  <body>
-    <header>
-      <div class="logo-container"></div>
-      <h1>ArcGIS Online: Developing with Web Maps and Web Scenes</h1>
-    </header>
-    <div id="viewDiv"></div>
-    <script src="./scripts/portal.js"></script>
-    <!-- <script src="./scripts/basemapGallery.js"></script> -->
-    <!-- <script src="./scripts/search.js"></script> -->
-    <!-- <script src="./scripts/legend.js"></script> -->
-    <!-- <script src="./scripts/bookmarks.js"></script> -->
-    <!-- <script src="./scripts/time.js"></script> -->
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ArcGIS Online: Developing with Web Maps and Web Scenes</title>
+  <script type="module" src=https://js.arcgis.com/calcite-components/1.0.0-beta.77/calcite.esm.js></script>
+</head>
+<body>
+  <div id="app"></div>
+  <script type="module" src="/src/samples/portalAuth.ts"></script>
+  <!-- <script type="module" src="/src/samples/portal.ts"></script> -->
+  <!-- <script type="module" src="/src/samples/search.ts"></script> -->
+  <!-- <script type="module" src="/src/samples/basemapGallery.ts"></script> -->
+  <!-- <script type="module" src="/src/samples/bookmarks.ts"></script> -->
+  <!-- <script type="module" src="/src/samples/legend.ts"></script> -->
+  <!-- <script type="module" src="/src/samples/time.ts"></script> -->
+</body>
+
 </html>

@@ -22,7 +22,13 @@ import WebMap from "@arcgis/core/WebMap";
 import Portal from "@arcgis/core/portal/Portal";
 import esriConfig from "@arcgis/core/config";
 
-export async function initApp(sampleType: string) {
+export async function initApp(
+  sampleType: string
+): Promise<{
+  view: __esri.MapView;
+  map: __esri.WebMap;
+  portal: __esri.Portal;
+}> {
   const appNode = document.getElementById("app");
   appNode.innerHTML = `
   <header>
@@ -40,7 +46,7 @@ export async function initApp(sampleType: string) {
 
   const map = await createMap(configObj[sampleType]);
   const view = await createView(map);
-  const portal = await getPortal(portalUrl);
+  const portal = await getPortal();
 
   handleShareTheme(portal);
 
@@ -73,9 +79,9 @@ export function createView(webmap) {
   });
 }
 
-export async function getPortal(url) {
+export async function getPortal() {
   try {
-    const portal = await new Portal({ url }).load();
+    const portal = await new Portal().load();
     return Promise.resolve(portal);
   } catch (err) {
     console.error("ERROR: ", err);

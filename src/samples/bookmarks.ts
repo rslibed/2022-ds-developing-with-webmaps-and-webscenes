@@ -24,10 +24,32 @@ import { initApp } from "../utils/utilities";
 
 (async () => {
   const props = await initApp("bookmarks");
-  const { view } = props;
+  const { view, map } = props;
+
+  // MODIFY BOOKMARKS LIST
+  // const bookmarkNames = [
+  //   "Atlanta",
+  //   "San Francisco",
+  //   "Los Angeles",
+  //   "New York",
+  //   "Boston",
+  //   "Detroit"
+  // ];
+
+  // const filteredBookmarks = map.bookmarks.filter(
+  //   bookmark => bookmarkNames.indexOf(bookmark.name) !== -1
+  // );
+
+  // map.set("bookmarks", filteredBookmarks);
+
+  console.log("WEB MAP: ", map);
+
+  console.log("BOOKMARKS FROM WEB MAP: ", map.bookmarks.toArray());
+
   const content = new Bookmarks({
     view
   });
+
   const bookmarksExpand = new Expand({
     content,
     view,
